@@ -1,6 +1,5 @@
 import Hero from '../components/Hero'
 import CardList from '../components/CardList'
-import Footer from '../components/Footer'
 
 export default function Homepage() {
   return (
@@ -10,7 +9,6 @@ export default function Homepage() {
       <CardList title={'Top Rated'} category={'top_rated'}/>
       <CardList title={'Popular'} category={'popular'}/>
       <CardList title={'Upcoming'} category={'upcoming'}/>
-      <Footer />
     </div>
   )
 }
