@@ -25,10 +25,6 @@ export default function CardList({ title, category }) {
             .catch(err => console.error(err));
     }, [])
 
-    console.log(data);
-
-
-
     return (
         <div className='text-white md:px-4'>
             <h2 className='capitalize pt-10 pb-5 text-lg font-medium'>{title}</h2>
