@@ -23,7 +23,7 @@ export default function CardList({ title, category }) {
                 setData(res.results)
             })
             .catch(err => console.error(err));
-    }, [])
+    }, [category])
 
     return (
         <div className='text-white md:px-4'>
