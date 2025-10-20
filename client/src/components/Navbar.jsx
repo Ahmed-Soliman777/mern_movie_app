@@ -1,10 +1,13 @@
 import { Search } from 'lucide-react';
 import logo from '../assets/logo.png'
+import { Link } from 'react-router';
 
 export default function Navbar() {
   return (
     <nav className='bg-black text-gray-200 flex justify-between items-center p-4 h-20 text-sm md:text-[15px] font-medium text-nowrap'>
-      <img src={logo} alt="logo" className='w-24 cursor-pointer brightness-125' />
+      <Link to={"/"}>
+        <img src={logo} alt="logo" className='w-24 cursor-pointer brightness-125' />
+      </Link>
       <ul className="capitalize hidden xl:flex space-x-6">
         <li className='cursor-pointer hover:text-[#e50914]'>Home</li>
         <li className='cursor-pointer hover:text-[#e50914]'>TV Shows</li>
