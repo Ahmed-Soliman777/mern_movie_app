@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Bookmark, Play } from 'lucide-react'
 import { Link } from 'react-router'
+import Loader from './Loader';
 
 export default function Hero() {
   const [movie, setMovie] = useState(null)
@@ -27,7 +28,11 @@ export default function Hero() {
   }, []);
 
   if (!movie) {
-    return <p className='text-white'>Loading...</p>;
+    return (
+      <div className="flex justify-center items-center h-100">
+        <Loader />
+      </div>
+    );
   }
 
   return (
