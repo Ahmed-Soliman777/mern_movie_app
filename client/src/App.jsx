@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import Moviepage from './pages/Moviepage'
 import Layout from './layout/Layout'
 import Signin from './pages/Signin'
+import Signup from './pages/Signup'
 
 export default function App() {
 
@@ -14,6 +15,7 @@ export default function App() {
       ]
     },
     { path: "/signin", element: <Signin /> },
+    { path: "/signup", element: <Signup /> },
   ])
 
   return (
