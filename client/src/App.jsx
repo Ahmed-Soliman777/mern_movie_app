@@ -4,6 +4,7 @@ import Moviepage from './pages/Moviepage'
 import Layout from './layout/Layout'
 import Signin from './pages/Signin'
 import Signup from './pages/Signup'
+import { Toaster } from 'react-hot-toast';
 
 export default function App() {
 
@@ -20,6 +21,7 @@ export default function App() {
 
   return (
     <>
+      <Toaster />
       <RouterProvider router={routes} />
     </>
   )
