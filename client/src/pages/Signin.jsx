@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router"
 import AuthNavbar from "../components/AuthNavbar"
 import { useAuthStore } from "../store/authStore"
+import toast from "react-hot-toast"
 
 export default function Signin() {
     const navigate = useNavigate()
@@ -15,10 +16,12 @@ export default function Signin() {
     async function handleSubmit(event) {
         event.preventDefault()
         try {
-            await login(username, password)
+            const { message } = await login(username, password)
+            toast.success(message)
             navigate('/')
         } catch (error) {
             console.log(error);
+            toast.error(error)
         }
     }
 
