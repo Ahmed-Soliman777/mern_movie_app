@@ -163,7 +163,7 @@ export async function login(req, res) {
             secure: process.env.NODE_ENV === "production",
             sameSite: "strict"
         });
-        return res.status(201).json({ message: "User logged successfully", data: user, token: token })
+        return res.status(201).json({ message: "User logged successfully", user: user, token: token })
 
     } catch (error) {
         return res.status(500).json({ message: error.message })
