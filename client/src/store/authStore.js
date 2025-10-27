@@ -23,5 +23,21 @@ export const useAuthStore = create((set) => ({
             set({ isLoading: false, error: error.response.data.message || "Error" })
             throw error
         }
+    },
+
+    login: async (username, password) => {
+        set({ isLoading: true, message: null })
+        try {
+            const response = await axios.post(`http://localhost:3000/login`, {
+                username,
+                password
+            })
+            const { user, message } = response.data
+            set({ user, message, isLoading: false })
+            return { user, message }
+        } catch (error) {
+            set({ isLoading: false, error: error.response.data.message })
+            throw error
+        }
     }
 }))
