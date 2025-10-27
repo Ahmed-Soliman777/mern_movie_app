@@ -24,7 +24,7 @@ export default function Navbar() {
         </div>
         <button className='capitalize bg-[#e50914] px-5 py-2 text-white cursor-pointer'>get AI movie picks</button>
         <Link to={'/signin'}>
-          <button className='capitalize border border-[#333333] py-2 px-4 cursor-pointer'>login</button>
+          <button className='capitalize border border-[#333333] py-2 px-4 cursor-pointer'>sign in</button>
         </Link>
       </div>
     </nav>
