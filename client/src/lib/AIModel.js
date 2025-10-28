@@ -1,7 +1,7 @@
 import { GoogleGenAI } from '@google/genai'
 
 const ai = new GoogleGenAI({
-    api: import.meta.env.GOOGLE_GENAI_API_KEY
+    apiKey: import.meta.env.VITE_GOOGLE_GENAI_API_KEY
 })
 
 const config = {
