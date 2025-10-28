@@ -3,13 +3,20 @@ import logo from '../assets/logo.png'
 import { Link } from 'react-router';
 import { useAuthStore } from './../store/authStore';
 import { useState } from 'react';
+import { toast } from 'react-hot-toast';
 
 export default function Navbar() {
-  const { user } = useAuthStore()
+  const { user, logout } = useAuthStore()
 
   const [showMenu, setShowMenu] = useState(false)
 
   const avatarUrl = user ? `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(user.username)}` : ``
+
+  async function handleLogout(){
+    const {message} = await logout()
+    toast.success(message)
+    setShowMenu(false)
+  }
 
   return (
     <nav className='bg-black text-gray-200 flex justify-between items-center p-4 h-20 text-sm md:text-[15px] font-medium text-nowrap'>
@@ -52,7 +59,7 @@ export default function Navbar() {
                   <Settings className='w-5 h-5'/>
                   Settings
                 </button>
-                <button className='flex items-center px-4 py-3 rounded-lg text-white bg-[#181818] hover:bg-[#1d1c1c] gap-3 cursor-pointer'>
+                <button className='flex items-center px-4 py-3 rounded-lg text-white bg-[#181818] hover:bg-[#1d1c1c] gap-3 cursor-pointer' onClick={handleLogout}>
                   <LogOut className='w-5 h-5'/>
                   Logout
                 </button>
