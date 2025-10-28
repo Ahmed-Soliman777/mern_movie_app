@@ -5,8 +5,20 @@ import Layout from './layout/Layout'
 import Signin from './pages/Signin'
 import Signup from './pages/Signup'
 import { Toaster } from 'react-hot-toast';
+import { useAuthStore } from './store/authStore'
+import { useEffect } from 'react'
 
 export default function App() {
+
+  const { fetchUser, fetchingUser } = useAuthStore()
+
+  useEffect(() => {
+    fetchUser()
+  }, [fetchUser])
+
+  if (fetchingUser) {
+    return <p>Loading...</p>
+  }
 
   const routes = createBrowserRouter([
     {
