@@ -41,22 +41,38 @@ export const useAuthStore = create((set) => ({
         }
     },
 
+
+    /// there is time handling error
+
     fetchUser: async () => {
-        set({ isLoading: true, error: null })
+        set({ fetchingUser: true, error: null });
+
         try {
             const response = await axios.get(`http://localhost:3000/profile`)
-            set({ user: response.data.user, isLoading: false, fetchingUser: false })
+            set({ user: response.data.user, fetchingUser: false });
+            // console.log(response);
+            
         } catch (error) {
-            if (
-                error.response &&
-                (error.response.status === 401 ||
-                    error.response.data.message === "No token provided!")
-            ) {
-                set({ user: null, fetchingUser: false, isLoading: false });
-                return null;
-            }
+            set({
+                fetchingUser: false,
+                error: null,
+                user: null,
+            });
+
+            throw error;
+        }
+    },
+
+    logout: async () => {
+        set({ isLoading: true, error: null, message: null })
+        try {
+            const response = await axios.post(`http://localhost:3000/logout`)
+            const { message } = response.data
+            set({ message, isLoading: null, user: null, error: null })
+            return { message }
+        } catch (error) {
             set({ isLoading: false, fetchingUser: false, error: error.response.data.message })
-            return null
+            throw error
         }
     }
 }))
