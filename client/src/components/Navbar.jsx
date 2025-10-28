@@ -12,8 +12,8 @@ export default function Navbar() {
 
   const avatarUrl = user ? `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(user.username)}` : ``
 
-  async function handleLogout(){
-    const {message} = await logout()
+  async function handleLogout() {
+    const { message } = await logout()
     toast.success(message)
     setShowMenu(false)
   }
@@ -37,7 +37,9 @@ export default function Navbar() {
           <input type="text" placeholder='Search....' className='bg-[#333333] px-4 py-2 rounded-full min-w-72 pr-10 outline-none' />
           <Search className='absolute top-2 right-4 w-5 h-5' />
         </div>
-        <button className='capitalize bg-[#e50914] px-5 py-2 text-white cursor-pointer'>get AI movie picks</button>
+        <Link to={!user ? '/signin' : '/ai-recommendations'}>
+          <button className='capitalize bg-[#e50914] px-5 py-2 text-white cursor-pointer'>get AI movie picks</button>
+        </Link>
         {!user ? <Link to={'/signin'}>
           <button className='capitalize border border-[#333333] py-2 px-4 cursor-pointer'>sign in</button>
         </Link> :
@@ -52,15 +54,15 @@ export default function Navbar() {
                   <span className="text-xs text-gray-400">{user.email}</span>
                 </div>
                 <button className='flex items-center px-4 py-3 rounded-lg text-white bg-[#181818] hover:bg-[#1d1c1c] gap-3 cursor-pointer'>
-                  <HelpCircle className='w-5 h-5'/>
+                  <HelpCircle className='w-5 h-5' />
                   Help Center
                 </button>
                 <button className='flex items-center px-4 py-3 rounded-lg text-white bg-[#181818] hover:bg-[#1d1c1c] gap-3 cursor-pointer'>
-                  <Settings className='w-5 h-5'/>
+                  <Settings className='w-5 h-5' />
                   Settings
                 </button>
                 <button className='flex items-center px-4 py-3 rounded-lg text-white bg-[#181818] hover:bg-[#1d1c1c] gap-3 cursor-pointer' onClick={handleLogout}>
-                  <LogOut className='w-5 h-5'/>
+                  <LogOut className='w-5 h-5' />
                   Logout
                 </button>
               </div>
