@@ -7,6 +7,7 @@ import Signup from './pages/Signup'
 import { Toaster } from 'react-hot-toast';
 import { useAuthStore } from './store/authStore'
 import { useEffect } from 'react'
+import AiRecommendations from './pages/AiRecommendations'
 
 export default function App() {
 
@@ -25,6 +26,7 @@ export default function App() {
       path: "/", element: <Layout />, children: [
         { path: "/", element: <Homepage /> },
         { path: "/movie/:id", element: <Moviepage /> },
+        { path: "/ai-recommendations", element: <AiRecommendations /> },
       ]
     },
     { path: "/signin", element: <Signin /> },
