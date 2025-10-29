@@ -5,4 +5,4 @@ builder = "NIXPACKS"
 NODE_ENV = "production"
 
 [start]
-cmd = "cd server && npm install && npm run start"
+cmd = "cd server && npm install && npm start"
