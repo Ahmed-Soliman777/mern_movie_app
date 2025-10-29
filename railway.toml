@@ -1,0 +1,5 @@
+[build]
+builder = "NIXPACKS"
+
+[nixpacks]
+entrypoint = "cd server && npm install && npm start"
