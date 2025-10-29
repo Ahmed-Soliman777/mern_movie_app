@@ -52,7 +52,7 @@ const initialState = steps.reduce((acc, step) => {
     return acc
 }, {})
 
-export default function AiRecommendations() {
+export default function AIRecommendations() {
 
     const [inputs, setInputs] = useState(initialState)
     const [step, setStep] = useState(0)
