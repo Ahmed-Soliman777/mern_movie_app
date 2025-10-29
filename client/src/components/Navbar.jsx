@@ -14,6 +14,7 @@ export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const searchRef = useRef(null);
+  const userRef = useRef(null)
 
   const avatarUrl = user
     ? `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(user.username)}`
@@ -39,15 +40,19 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    function handleClickOutSide(event) {
+    function handleClickOutside(event) {
+      if (userRef.current && !userRef.current.contains(event.target)) {
+        setShowMenu(false);
+      }
       if (searchRef.current && !searchRef.current.contains(event.target)) {
         setShowSearch(false);
       }
     }
 
-    document.addEventListener('mousedown', handleClickOutSide);
-    return () => document.removeEventListener('mousedown', handleClickOutSide);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
 
   async function handleLogout() {
     const { message } = await logout();
@@ -129,12 +134,17 @@ export default function Navbar() {
             <button className='capitalize border border-[#333333] py-2 px-4 cursor-pointer'>sign in</button>
           </Link>
         ) : (
-          <div className="text-white">
+          <div
+            ref={userRef}
+            className="relative text-white"
+          >
             <img
               src={avatarUrl}
               alt="user_avatar"
-              className='w-10 h-10 rounded-full border-2 border-[#e50914]'
-              onClick={() => setShowMenu(!showMenu)}
+              className="w-10 h-10 rounded-full border-2 border-[#e50914] cursor-pointer"
+              onClick={() => {
+                setShowMenu((prev) => !prev);
+              }}
             />
             {showMenu && (
               <div className="absolute right-0 mt-2 w-64 bg-[#232323]/95 rounded-lg z-50 shadow-lg py-4 px-3 flex flex-col gap-2 border border-[#333333]">
