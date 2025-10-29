@@ -13,7 +13,7 @@ export const useAuthStore = create((set) => ({
     signup: async (username, email, password) => {
         set({ isLoading: true, message: null });
         try {
-            const response = await axios.post(`http://localhost:3000/register`, {
+            const response = await axios.post(`https://aiflex-six.vercel.app/api/register`, {
                 username,
                 email,
                 password
@@ -28,7 +28,7 @@ export const useAuthStore = create((set) => ({
     login: async (username, password) => {
         set({ isLoading: true, message: null })
         try {
-            const response = await axios.post(`http://localhost:3000/login`, {
+            const response = await axios.post(`https://aiflex-six.vercel.app/api/login`, {
                 username,
                 password
             })
@@ -48,7 +48,7 @@ export const useAuthStore = create((set) => ({
         set({ fetchingUser: true, error: null });
 
         try {
-            const response = await axios.get(`http://localhost:3000/profile`)
+            const response = await axios.get(`https://aiflex-six.vercel.app/api/profile`)
             set({ user: response.data.user, fetchingUser: false });
             // console.log(response);
             
@@ -66,7 +66,7 @@ export const useAuthStore = create((set) => ({
     logout: async () => {
         set({ isLoading: true, error: null, message: null })
         try {
-            const response = await axios.post(`http://localhost:3000/logout`)
+            const response = await axios.post(`https://aiflex-six.vercel.app/api/logout`)
             const { message } = response.data
             set({ message, isLoading: null, user: null, error: null })
             return { message }
