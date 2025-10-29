@@ -91,3 +91,8 @@ Contributions are welcome. Small, well-scoped PRs are easiest to review. Please:
 4. Open a PR with a clear description of the change
 
 ---
+
+## Preview
+
+![Home page](assets/homepage.png)
+![Generated Movies](assets/GeneratedMovie.png)
