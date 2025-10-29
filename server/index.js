@@ -21,11 +21,12 @@ connectDB();
 
 const port = 3000
 
-app.use('/api', userRoute)
 
 app.get("/", (req, res) => {
   res.send("Hello World!")
 })
+
+app.use('/api', userRoute)
 
 if (process.env.NODE_ENV !== "production") {
   app.listen(port, () => {
