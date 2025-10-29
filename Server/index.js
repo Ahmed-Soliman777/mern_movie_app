@@ -18,6 +18,7 @@ app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }))
 
 app.use('', userRoute)
 
+connectDB();
 
 const port = 3000
 
@@ -25,7 +26,10 @@ app.get("/", (req, res) => {
     res.send("Hello World!")
 })
 
-app.listen(port, () => {
-    connectDB()
-    console.log(`server runs on port ${port}`);
-})
+if (process.env.NODE_ENV !== "production") {
+  app.listen(port, () => {
+    console.log(`Server running locally on http://localhost:${port}`);
+  });
+}
+
+export default app;
