@@ -148,7 +148,7 @@ export async function login(req, res) {
             return res.status(401).json({ message: "Invalid credentials." });
         }
 
-        const isPasswordValid = bcryptjs.compareSync(password, user.password);
+        const isPasswordValid = bcryptjs.compare(password, user.password);
         if (!isPasswordValid) {
             return res.status(401).json({ message: "Invalid credentials." });
         }
@@ -163,7 +163,7 @@ export async function login(req, res) {
             secure: process.env.NODE_ENV === "production",
             sameSite: "strict"
         });
-        return res.status(201).json({ message: "User logged successfully", user: user, token: token })
+        return res.status(200).json({ message: "User logged successfully", user: user, token: token })
 
     } catch (error) {
         return res.status(500).json({ message: error.message })
