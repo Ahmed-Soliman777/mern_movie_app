@@ -16,14 +16,15 @@ app.use(cookieParser())
 
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }))
 
-app.use('', userRoute)
 
 connectDB();
 
 const port = 3000
 
+app.use('/api', userRoute)
+
 app.get("/", (req, res) => {
-    res.send("Hello World!")
+  res.send("Hello World!")
 })
 
 if (process.env.NODE_ENV !== "production") {
