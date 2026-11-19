@@ -7,6 +7,7 @@ import cors from 'cors'
 import userRoute from "./routes/user.route.js"
 
 dotenv.config()
+await connectDB();
 
 const app = express()
 
@@ -14,10 +15,8 @@ app.use(express.json())
 
 app.use(cookieParser())
 
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }))
+app.use(cors({ origin: process.env.CLIENT_URL || "http://localhost:5173", credentials: true }))
 
-
-connectDB();
 
 const port = 3000
 
