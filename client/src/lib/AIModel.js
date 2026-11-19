@@ -8,7 +8,7 @@ const config = {
     responseMimeType: 'text/plain'
 }
 
-const model = 'gemini-2.0-flash'
+const model = 'gemini-2.5-flash'
 
 export async function getAIRecommendation(prompt) {
     try {
